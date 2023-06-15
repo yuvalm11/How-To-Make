@@ -1,3 +1,5 @@
+### Check out the website and read about my work in the class [here!](https://fab.cba.mit.edu/classes/863.22/EECS/people/Yuval/index.html)
+
 # Overview
 
 [How To Make (almost) Anything](https://fab.cba.mit.edu/classes/863.22/) is a unique class aiming to teach students from different backgrounds how to use digital fabrication tools to enhance their work. The class is taught by [Neil Gershenfeld](https://en.wikipedia.org/wiki/Neil_Gershenfeld) at the [MIT Center for Bits and Atoms](https://cba.mit.edu/) and cover a wide range of topics from computer controlled machining to electronics production and embedded programming.
@@ -6,8 +8,6 @@
 ### The website
 
 As part of the class, I built a personal web app to document my progress and showcase my work. 
-
-You can find the website and read about my work in the class [here!](https://fab.cba.mit.edu/classes/863.22/EECS/people/Yuval/index.html)
 
 <br>
 
