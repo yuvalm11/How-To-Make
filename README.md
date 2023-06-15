@@ -1,6 +1,6 @@
 <br>
 
-### Website link: [Yuval makes (almost) anything](https://fab.cba.mit.edu/classes/863.22/EECS/people/Yuval/index.html)
+### Take a look at the website here: [Yuval makes (almost) anything](https://fab.cba.mit.edu/classes/863.22/EECS/people/Yuval/index.html)
 <br>
 
 # Overview
