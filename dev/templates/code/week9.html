@@ -1,0 +1,142 @@
+<pre style="height: 22em;"><code class="language-pascal">#include &lt;Adafruit_NeoPixel.h>
+
+#ifdef __AVR__#include &lt;avr/power.h>
+#endif
+
+#define LEDPIN 3
+#define BTN1 1
+#define BTN2 2
+#define NUMPIXELS 100
+
+Adafruit_NeoPixel pixels(NUMPIXELS, LEDPIN, NEO_GRB + NEO_KHZ800);
+
+int button = 0;
+int button_p = 0;
+int button1 = 0;
+int button2 = 0;
+int button1_p = 0;
+int button2_p = 0;
+int ball = 0;
+bool gameOn = false;
+
+int R_player1 = 60;
+int G_player1 = 8;
+int B_player1 = 0;
+
+int R_player2 = 23;
+int G_player2 = 60;
+int B_player2 = 1;
+
+int R = 200;
+int G = 200;
+int B = 200;
+
+void setup() {
+    #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
+    clock_prescale_set(clock_div_1);
+    #endif
+    pinMode(BTN1, INPUT_PULLUP);
+    pinMode(BTN2, INPUT_PULLUP);
+    pixels.begin();
+
+    pixels.clear();
+    pixels.show();
+    }
+
+    void loop() {
+    // new game starts
+    int dir = random(0, 2);
+    int DELAYVAL = 3500 / NUMPIXELS;
+
+    pixels.clear();
+    for (int i = 0; i &lt;= NUMPIXELS / 4; i++) {
+        pixels.setPixelColor(i, pixels.Color(R_player1, G_player1, B_player1));
+    }
+    for (int i = NUMPIXELS - 1 - NUMPIXELS / 4; i &lt;= NUMPIXELS - 1; i++) {
+        pixels.setPixelColor(i, pixels.Color(R_player2, G_player2, B_player2));
+    }
+
+    if (dir == 1) {
+        ball = 0;
+    } else {
+        dir = -1;
+        ball = NUMPIXELS - 1;
+    }
+
+    pixels.setPixelColor(ball, pixels.Color(R, G, B));
+    pixels.show();
+
+    while (not gameOn) {
+        if (dir == -1) {
+        button = digitalRead(BTN2);
+        } else {
+        button = digitalRead(BTN1);
+        }
+        if (button == LOW) {
+        gameOn = true;
+        ball += dir;
+        }
+    }
+
+    while (gameOn) {
+        button1_p = button1;
+        button2_p = button2;
+        button2 = digitalRead(BTN2);
+        button1 = digitalRead(BTN1);
+
+        if (dir == 1) {
+        if (ball > (NUMPIXELS - NUMPIXELS / 4) - 2) {
+            button = button2;
+            button_p = button2_p;
+        } else {
+            button = HIGH;
+        }
+        } else {
+        if (ball &lt; NUMPIXELS / 4 + 1) {
+            button = button1;
+            button_p = button1_p;
+        } else {
+            button = HIGH;
+        }
+        }
+        if (button == LOW && button_p == HIGH) {
+        dir *= -1;
+        ball += 2 * dir;
+        if (DELAYVAL > 200); {
+            DELAYVAL *= 0.95;
+        }
+        }
+
+        delay(DELAYVAL);
+        if (ball == 0) {
+        gameOn = false;
+        for (int i = 0; i &lt; NUMPIXELS / 2; i++) {
+            pixels.setPixelColor(i, pixels.Color(100, 0, 0));
+            pixels.setPixelColor(i + (NUMPIXELS / 2), pixels.Color(0, 100, 0));
+        }
+        pixels.show();
+        delay(3000);
+        } else if (ball == NUMPIXELS - 1) {
+        gameOn = false;
+        for (int i = NUMPIXELS / 2; i &lt; NUMPIXELS; i++) {
+            pixels.setPixelColor(i, pixels.Color(100, 0, 0));
+            pixels.setPixelColor(i - (NUMPIXELS / 2), pixels.Color(0, 100, 0));
+        }
+        pixels.show();
+        delay(3000);
+        }
+        else {
+        pixels.setPixelColor(ball - dir, pixels.Color(0, 0, 0));
+        for (int i = 0; i &lt;= NUMPIXELS / 4; i++) {
+            pixels.setPixelColor(i, pixels.Color(R_player1, G_player1, B_player1));
+        }
+        for (int i = NUMPIXELS - 1 - NUMPIXELS / 4; i &lt;= NUMPIXELS - 1; i++) {
+            pixels.setPixelColor(i, pixels.Color(R_player2, G_player2, B_player2));
+        }
+        pixels.setPixelColor(ball, pixels.Color(R, G, B));
+
+        ball += dir;
+        pixels.show();
+        }
+    }
+}</code></pre>

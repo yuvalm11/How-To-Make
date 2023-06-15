@@ -1,0 +1,31 @@
+<pre style="height: 22em;"><code class="language-pascal">for (let i = 0; i < 7; i++) {
+    ref = database.ref("LED/" + i);
+    ref.on('value', (snapshot) => {
+        val = snapshot.val();
+        console.log(val);
+        element = document.getElementById("LED" + i)
+        if (val == 1) {
+            element.innerHTML = "ON";
+            element.style.backgroundColor = "green";
+        } else {
+            element.innerHTML = "OFF";
+            element.style.backgroundColor = "red";
+        }
+
+    }, (errorObject) => {
+        console.log('The read failed: ' + errorObject.name);
+    });
+}
+
+function tglLED(LEDid) {
+    ref = database.ref("LED/" + LEDid);
+    ref.get().then((snapshot) => {
+        if (snapshot.exists()) {
+            ref.set(snapshot.val() * -1);
+        } else {
+            console.log("No data available");
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
+}</code></pre>

@@ -1,0 +1,54 @@
+[
+    {
+        "id": "1",
+        "title": "computer-controlled cutting"
+    },
+    {
+        "id": "2",
+        "title": "electronics production"
+    },
+    {
+        "id": "3",
+        "title": "3D scanning & printing"
+    },
+    {
+        "id": "4",
+        "title": "electronics design"
+    },
+    {
+        "id": "5",
+        "title": "computer-controlled machining"
+    },
+    {
+        "id": "6",
+        "title": "embedded programming"
+    },
+    {
+        "id": "7",
+        "title": "molding & casting"
+    },
+    {
+        "id": "8",
+        "title": "input devices"
+    },
+    {
+        "id": "9",
+        "title": "output devices"
+    },
+    {
+        "id": "10",
+        "title": "networking & communications"
+    },
+    {
+        "id": "11",
+        "title": "interface & application programming"
+    },
+    {
+        "id": "12",
+        "title": "mechanical machine design"
+    },
+    {
+        "id": "13",
+        "title": "wildcard week"
+    }
+]

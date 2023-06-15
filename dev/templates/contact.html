@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div style="text-align: center; height: 100vh;">
+    <div class="only-lg" style="height: 20%;"></div>
+    <div class="row justify-content-center">
+        <div class="col-lg-3 mt-5">
+            <img width="35%" src="{{url_for('static', filename='assets/contact/email_icon.svg')}}">
+            <p>email at mit.edu</p>
+        </div>
+        <div class="col-lg-3 order-3 mt-5">
+            <img width="35%" src="{{url_for('static', filename='assets/contact/linkedin.svg')}}">
+            <a class="nav-link " href="#" target="_blank"
+                rel="noreferrer noopener">
+                &#10697; Add me on LinkedIn
+            </a>
+        </div>
+        <div class="col-lg-3 order-3 mt-5">
+            <img width="35%" src="{{url_for('static', filename='assets/contact/github.svg')}}">
+            <a class="nav-link " href="#" target="_blank"
+                rel="noreferrer noopener">
+                &#10697; GitHub
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

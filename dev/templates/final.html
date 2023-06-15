@@ -1,0 +1,454 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="final-container">
+    <div class="final-video-container">
+        <video class="only-lg" autoplay muted loop>
+            <source src="{{url_for('static', filename='assets/final/final_main.mp4')}}" type="video/mp4" />
+        </video>
+        <img class="only-sm img-fluid" src="{{url_for('static', filename='assets/final/final_main_img.jpg')}}" />
+        <div class="caption">
+            <h1 class="display-1 final-title">M8</h1>
+            <p class="display-4 final-subtitle">The automated chessboard</p>
+        </div>
+    </div>
+
+    <div class="final-content mt-5">
+        <!-- Motivation -->
+        <h3>Motivation</h3>
+        <p>
+            A few weeks ago I got a picture of my 4-year-old niece at her first chess class. <br>
+            As a chess hobbyist, I was excited to see my niece taking her first steps in the world of chess, and I
+            couldn't wait to play with her. <br>
+            Unfortunately, since I live almost 9000km away from her, playing together will be challenging. The idea of
+            building an automated chessboard came to my mind immediately - a board that will let two players in distant
+            locations have a real chess game. <br><br>
+            "So you build a magic chessboard that moves the pieces for you?" my niece asked me over the phone. I
+            couldn't come up with a better description for this project.
+        </p>
+
+        <div class="break-line"></div>
+
+        <!-- Overview -->
+        <h3>Overview</h3>
+        <div class="row">
+            <div class="col-lg-5">
+                <p>
+                    Building the project was an incredible experience!<br>
+                    I enjoyed every minute I put into it and learned so much from the process - from mechanical
+                    design to embedded programming. <br>
+                    After countless hours at the shop, I am extremely proud of the result, and the progress I made
+                    while building it. <br>
+                    The development process can be divided into four main sections:
+                </p>
+                <ul style="text-align: left;">
+                    <ul>
+                        <li><a style="color: var(--dark)" href="#mechanical_design">mechanical design</a></li>
+                        <li><a style="color: var(--dark)" href="#electronics">electronics</a></li>
+                        <li><a style="color: var(--dark)" href="#embedded_programming">embedded programming</a></li>
+                        <li><a style="color: var(--dark)" href="#communication">internet communication and user
+                                interface</a>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="col-lg">
+                <figure>
+                    <video class="img-fluid" muted controls>
+                        <source src="{{url_for('static', filename='assets/final/final_demo.mp4')}}" type="video/mp4">
+                    </video>
+                    <figcaption>Full demo of the board and the app!</figcaption>
+                </figure>
+            </div>
+            <p>
+                Each of these sections required a different set of skills and resources and combining them all
+                together was challenging. <br>
+                I was able to achieve most of the goals I had, but there are still additional features I plan on
+                implementing in the near future. This page will review the development process, as well as the
+                plans for the future.
+            </p>
+        </div>
+
+        <div class="break-line"></div>
+
+        <!-- Mechanical design -->
+        <h3 id="mechanical_design">Mechanical design</h3>
+        <div class="row">
+            <div class="col-lg-7">
+                <p>
+                    Designing and building the hardware for the project was a lot of fun! I started by designing the
+                    gantry
+                    and the end effector, and then moved on to the board and the pieces. <br>
+                    Since I did'nt have much experience with the skill set required for this section, I think it's a
+                    great
+                    example of the progress I made in this class.
+                </p>
+                <h4>The gantry</h4>
+                <p>
+                    This stage might be the one I enjoyed the most while building the project. I learned a lot about
+                    mechanical machine design, and after many iterations, I found a gantry system that fits the needs of
+                    the product.
+                    <br>
+                    I experimented with several gantry system designs before getting to the final design - most of them
+                    are inspired by Quentin's Urumbu and Jake's Clanck. <br><br>
+
+                    I used a 2D core XY gantry system, powered by two stationary DC motors. <br>
+                    I designed the parts to fit a 25×25 millimeters Aluminum extrusion for the frame, 20×20 for the end
+                    effector axis, and a GT2 timing belt. <br>
+                    I added fractures to all the moving axis mounts and designed the pieces to be smaller than the width
+                    of the aluminum extrusion to create some pressure between the wheels and the axis. <br>
+                    The fractures improved the system's stability and made the movement much smoother. <br>
+                    The end effector contains a press-fit nut that carries the electromagnet and a timing belt fastener.
+                    <br>
+                    All the parts were 3D printed using a PLA printer.
+                </p>
+                <h4>Making the pieces</h4>
+                <p>
+                    Since the system is dragging the pieces over the board, I had to design a chess set with a smaller
+                    base to allow pieces to move between the board's squares. <br>
+                    I aimed for a modern and simple design that fits the feel of the product. <br>
+                    I used a CNC lathe to carve the pieces, modified the knight and rook with hand tools, and finally
+                    sanded everything to a smooth finish. <br>
+                    I colored the black pieces with a black wood stain. <br><br>
+
+                    Although Anthony loves to complain about this machine, the lathe we have at the shop did a wonderful
+                    job. I really enjoyed making the pieces and by the time I finished, I got very comfortable with the
+                    machine and would love to use it again for future projects.
+                </p>
+                <h4>The board</h4>
+                <p>
+                    I used four pieces of clear acrylic to build the board, allowing the user to see everything that is
+                    going on underneath the board. <br>
+                    I laser cut the triangles pattern on the thick ones to support capacitance sensors in the future.
+                </p>
+                <h4>Improvements</h4>
+                <p>
+                    I want to design another version of the system that will use long linear rails instead of aluminum
+                    extrusion. That will allow me to get a shorter gantry and get closer to the size of a regular
+                    chessboard. <br>
+                    Additionally, I would love to use thin wooden boards for the chessboard to create a traditional look
+                    and feel for the product.
+                </p>
+            </div>
+            <div class="col-lg">
+                <figure>
+                    <model-viewer style="height: 500px; width: 100%;"
+                        src="{{url_for('static', filename='assets/final/gantry.glb')}}" ar
+                        ar-modes="webxr scene-viewer quick-look" camera-controls
+                        poster="{{url_for('static', filename='assets/final/gantry.webp')}}" shadow-intensity="1"
+                        camera-target="0m 30m 0m" camera-orbit="39.75deg 65.06deg 723.7m" field-of-view="23.54deg"
+                        auto-rotate>
+                        <div class="progress-bar hide" slot="progress-bar">
+                            <div class="update-bar"></div>
+                        </div>
+                    </model-viewer>
+                    <figcaption>3D model of the gantry parts</figcaption>
+                </figure>
+                <figure>
+                    <img class="img-fluid" src="{{url_for('static', filename='assets/final/corexy_sketch.jpg')}}"
+                        alt="">
+                    <figcaption>Reference core XY design</figcaption>
+                </figure>
+                <figure>
+                    <video class="img-fluid" muted controls>
+                        <source src="{{url_for('static', filename='assets/final/pawn_lathe.mp4')}}" type="video/mp4">
+                    </video>
+                    <figcaption>Cutting a pawn</figcaption>
+                </figure>
+                <figure>
+                    <video class="img-fluid" muted controls>
+                        <source src="{{url_for('static', filename='assets/final/bishop_lathe.mp4')}}" type="video/mp4">
+                    </video>
+                    <figcaption>Cutting a bishop</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="break-line"></div>
+
+        <!-- Electronics -->
+        <h3 id="electronics">Electronics</h3>
+        <div class="row">
+            <div class="col-lg-7">
+                <p>
+                    Electronics are the heart of the project, so it was important to me to build reliable and stable
+                    circuits. <br>
+                    I designed the PCB based on my week 10 circuit and only added the motor drivers and routes to the
+                    magnet.
+                    <br><br>
+                    I chose the ESP32 as a microcontroller since it allows web communication. <br>
+                    I used two TMC2208 drivers to drive the motors, which were easy to operate once I understood the
+                    power consumption issues. <br>
+                    I also added a small N-channel MOSFET circuit and a 9V battery to control the electromagnet magnet.
+                    <br>
+                    Although they are far less convenient, I used more durable connectors for the wires instead of the
+                    headers we usually use. <br><br>
+
+                    After experimenting with 5V and 9V power supplies, I ended up using a 12V 2Amp power supply.
+                    Following Jake's advice, I added a large 100µF capacitor to prevent spikes in voltage. <br>
+                    The motor drivers and the regulator were getting hot pretty quickly at this voltage, so I placed
+                    heat sinks on them. <br>
+                    I also added another FTDI connector to allow serial communication with the capacitance sensors
+                    board. <br>
+                    I made an additional board to manage the 64 capacitance sensors. I used SAM D21E as a
+                    microcontroller and 16 breakout pins for the sensors. <br>
+                    Using this method, I was able to connect all the transmitting copper plats to the eight rows of the
+                    chess board and the receiving plates to the columns allowing me to process data from 64 sensors with
+                    only 16 I/O pins! <br><br>
+                    I added 3.3V, ground, and serial data pins to allow serial communication with the main ESP32 board.
+                    <br>
+                    Eventually, I was not able to implement the sensors system on time but still made a small POC with
+                    nine sensors. Therefore, the PCBs I made are ready to support this function in the future, and I
+                    will only need to cut and solder the copper plates and write the software to implement it.
+                </p>
+            </div>
+            <div class="col-lg">
+                <div class="row">
+                    <div class="col-lg">
+                        <figure>
+                            <img class="img-fluid" src="{{url_for('static', filename='assets/final/main_pcb.jpeg')}}">
+                            <figcaption>The final board</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-lg">
+                        <figure>
+                            <img class="img-fluid"
+                                src="{{url_for('static', filename='assets/final/sensors_board.jpeg')}}">
+                            <figcaption>Capacitance board</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <figure>
+                    <img class="img-fluid" src="{{url_for('static', filename='assets/final/ESP_PCB.jpg')}}" alt="">
+                    <figcaption>Main PCB design</figcaption>
+                </figure>
+                <figure>
+                    <img class="img-fluid" src="{{url_for('static', filename='assets/final/Cap_sensors_board.jpg')}}">
+                    <figcaption>Sensors PCB design</figcaption>
+                </figure>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                <figure>
+                    <video class="img-fluid" muted controls>
+                        <source src="{{url_for('static', filename='assets/final/soldering_esp.mp4')}}" type="video/mp4">
+                    </video>
+                    <figcaption>soldering of the main board</figcaption>
+                </figure>
+            </div>
+            <div class="col-lg">
+                <figure>
+                    <video class="img-fluid" muted controls>
+                        <source src="{{url_for('static', filename='assets/final/soldering_sensors_pcb.mp4')}}"
+                            type="video/mp4">
+                    </video>
+                    <figcaption>soldering of the sensors board</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="break-line"></div>
+
+        <!-- Embedded programming -->
+        <h3 id="embedded_programming">Embedded programming</h3>
+        <div class="row">
+            <div class="col-lg-7">
+                <p>
+                    Writing the code for the board was the last stage of the project. I tried to create a stable system
+                    before writing the software to simplify the development process. Those efforts paid off, and after a
+                    short configuration of the motors' movement, I could concentrate solely on the game logic.<br><br>
+                    To make the code more organized, I wrote separate functions for each type of movement - horizontal,
+                    vertical, diagonal, and knight. <br>
+                    The general code cycle starts after homing the machine. The program sends a request every half a
+                    second to the database and looks for a new command. <br>
+                    If a command is received, the program will drive the motors to move the electromagnet to the current
+                    position of the piece, turn on the electromagnet, move to the desired location, and turn the
+                    electromagnet off. <br>
+                    After executing a move, the program clears the database and returns to look for new commands. <br>
+                    Although the code for the basic logic of the game is fully working, most of the features I plan to
+                    implement in the future are in the software. <br>
+                    I managed my time to allow that since writing code is more convenient for me. <br>
+                    I still need to implement the knight movement, capturing pieces, and castling, as well as sending
+                    physical moves from the board to the app after adding the capacitance sensors.
+                </p>
+            </div>
+            <div class="col-lg">
+                <figure>
+                    <video class="img-fluid" muted controls>
+                        <source src="{{url_for('static', filename='assets/final/first_move.mp4')}}" type="video/mp4">
+                    </video>
+                    <figcaption>The first piece I moved with the board!</figcaption>
+                </figure>
+                <figure>
+                    <video style="width: 100%;" class="img-fluid" autoplay loop muted>
+                        <source src="{{url_for('static', filename='assets/final/first_program.mov')}}" type="video/mp4">
+                    </video>
+                    <figcaption>The code for the first move</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="break-line"></div>
+
+        <!-- Communication and UI -->
+        <h3 id="communication">Internet communication and user interface</h3>
+        <div class="row">
+            <div class="col-lg-9">
+                <p>
+                    I did almost all of the backend and communication work during week 10 of the class. <br>
+                    My goal was to create a clear communication channel between the board and a web chess app to allow
+                    sending commands from the app to the board and data from the board to the app. <br>
+                </p>
+                <h4>Backend</h4>
+                <p>
+                    I used Google's Firebase for the web app hosting and real-time database. <br>
+                    The first stage was to set up the environment on Firebase. <br>
+                    I created a real-time database that contains the current state of the board and an optional command
+                    JSON. <br>
+                    The command JSON consists of the piece to move, the current location of the piece, the destination
+                    to move it, and if the move is a capturing move. <br>
+                    After making a move on the app, it sends the command to the database. When the board notices a new
+                    command, it executes the move and clears the database.
+                </p>
+                <h4>Chess web app</h4>
+                <p>
+                    I created a chess web app using only Javascript and HTML that is fully playable and communicates
+                    with the database. <br>
+                    I followed <a href="https://www.youtube.com/watch?v=wYRRVRrK0R8">this tutorial</a> to make the basic
+                    logic, added all the Firebase communication to it, changed the UI, and fixed some bugs it had.
+                </p>
+                <h4>WiFi Manager</h4>
+                <p>
+                    I added a WiFi manager system to support different networks and avoid hard-coded WiFi credentials.
+                    <br>
+                    After some research, I found <a href="https://github.com/tzapu/WiFiManager">this</a> incredible
+                    library that handles this burden with a few lines of code. <br>
+                    I had to dive into their weirdly written code to customize the interface to a more user-friendly
+                    design, but it was worth it. <br>
+                    The result is a smooth, straightforward process that does not require downloading an app or any
+                    special effort from the user. <br>
+                    <a href="https://dronebotworkshop.com/wifimanager/">This tutorial</a> helped me with the
+                    installation and configuration of the library.
+                </p>
+            </div>
+            <div class="col-lg">
+                <figure>
+                    <img class="img-fluid" src="{{url_for('static', filename='assets/final/chess_app.jpg')}}" alt="">
+                    <figcaption>The chess app interface</figcaption>
+                </figure>
+                <figure>
+                    <video style="width: 100%;" class="img-fluid" controls muted>
+                        <source src="{{url_for('static', filename='assets/weeks/week10/wifimanager.mp4')}}"
+                            type="video/mp4">
+                    </video>
+                    <figcaption>WiFi configuration process</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="break-line"></div>
+
+        <!-- Conclusion -->
+        <p>
+            Making this project was an amazing experience. I am so proud of the result and the progress I have
+            made while building it. <br>
+            Although I did not manage to implement all the features I planned by the time of the final
+            presentation, I consider the project a success because it is designed to support future work. <br>
+            Almost all of the future work requires coding only, without any hardware or electronics
+            modifications. <br> I designed and made (almost) anything in this project using all the different skills I
+            have learned in this class. <br>
+            I used 3D modeling and computer-controlled cutting for the pieces, 3D printing for the gantry,
+            developed a web app and built the network communication process. Finally, I designed, milled, and
+            soldered the PCBs and wrote the embedded programming code. <br><br>
+            Besides the materials for the pieces, I only used materials that were part of the class inventory.
+            Below you can find the overall estimated cost of the project.
+        </p>
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Part</th>
+                    <th>Quantity </th>
+                    <th>Price in USD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Oak roads</td>
+                    <td>3</td>
+                    <td>41</td>
+                </tr>
+                <tr>
+                    <td>Black wood stain</td>
+                    <td></td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Neodymium magnets<br></td>
+                    <td>32</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>Clear acrylic sheets</td>
+                    <td>4</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>PLA filament</td>
+                    <td>30 printing hours</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>stepper motors</td>
+                    <td>2</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Aluminum extrusion </td>
+                    <td>~4 ft</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>TMC2208 motor drivers</td>
+                    <td>2</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>ESP32</td>
+                    <td>1</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>MOSFET N-CH</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>SAM D21E</td>
+                    <td>1</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>12V power supply</td>
+                    <td>1</td>
+                    <td>11</td>
+                </tr>
+                <tr>
+                    <td>9V battery </td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Misc. electronics</td>
+                    <td></td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <th>Total cost</th>
+                    <th> </th>
+                    <th>180</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

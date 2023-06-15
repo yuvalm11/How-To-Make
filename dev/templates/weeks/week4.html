@@ -1,0 +1,64 @@
+<h3>Version 1</h3>
+<div class="row">
+    <div class="col-lg-8">
+        <p>
+            This week was less creatively challenging than most of the weeks of the class. I started by modifying the
+            simple SAM-D11C board and added an LED and a button.<br>
+            That was the first time I used fusion to design a PCB or designed a circuit in general. It took me some time
+            to get used to the workflow but at the end of the week, I noticed that I felt much more comfortable with
+            that. I was happy to learn another complementary skill after electronics production week and I am looking
+            forward to embedded programming week, which will add another skill on top of these two.<br>
+            After a pretty straightforward design process, I had my first version of the PCB and was ready to mill. I
+            milled the board and soldered the components and that whole process went smoothly without any issues.<br>
+            However, programming the board was harder due to the EDBG-mac compatibility problems, but with Anthony's
+            help, I was able to get it programmed with the 'echo' code.
+        </p>
+    </div>
+    <div class="col-lg">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week4/v1.jpg')}}">
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week4/connected.jpeg')}}" class="img-fluid">
+    </div>
+    <div class="col-lg">
+        <video class="img-fluid" width="100%" muted controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week4/milling.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+
+<h3 class="mt-4">Version 2.0</h3>
+<div class="row">
+    <div class="col-lg-8">
+        <p>
+            After reviewing my board, I noticed that a lot of optimization can be done to significantly reduce the area
+            of the board and improve the arrangement of the parts.<br>
+            I started tweaking my routing step by step while making sure I am not violating the design rules.
+            Ultimately, I got a much smaller and better-looking PCB design.<br>
+            Although I had a programmed board by that point, I wanted to see if the second version is still
+            programmable. I milled and populated the board and went on to program it.<br>
+            While trying to program it we noticed that when the board and the programmer are connected to different
+            power supplies, the programmer cannot find the board. Anthony suggested that this can happen due to
+            disconnected grounds, and indeed that was the situation.<br>
+            To solve that, I added a jumper wire between the two disconnected grounds and successfully programmed the
+            board.
+        </p>
+    </div>
+    <div class="col-lg">
+        <img src="{{url_for('static', filename='/assets/weeks/week4/Improved.jpg')}}" class="img-fluid">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <img src="{{url_for('static', filename='/assets/weeks/week4/imporved_conn.jpeg')}}" class="img-fluid">
+    </div>
+    <div class="col-lg">
+        <video class="img-fluid" muted controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week4/solder.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+</div>

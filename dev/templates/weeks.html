@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="weeks-sidebar">
+    <div class="row">
+        <div class="col p-0 m-0 only-lg"></div>
+        <div class="col-lg-10">
+            <div id="box" class="yellow"></div>
+            {% for week in weeks %}
+            <a id="w{{week.id}}" href="#week{{week.id}}">
+                <b><span class="only-lg">Week </span>#{{ week.id }}</b><br>
+                <span class="only-lg">- {{ week.title }}</span>
+            </a>
+            {% endfor %}
+        </div>
+        <div class="col">
+            <div class="yellow" style="width: var(--sep-line-thickness); height: calc(100% + 2em);"></div>
+        </div>
+    </div>
+</div>
+<div class="weeks-content">
+    {% for week in weeks %}
+    <h1 id="week{{week.id}}"><b>Week #{{ week.id }}</b></h1>
+    <h3><b>{{ week.title }}</b></h3>
+
+    <div class="break-line"></div>
+
+    <div class="week-content">
+        <!-- include the correct week html -->
+        {% include "weeks/week" + week.id + ".html" %}
+    </div>
+
+    <h3 style="text-align: center;" class="pb-5"><b>-------</b></h3>
+    {% endfor %}
+</div>
+{% endblock %}

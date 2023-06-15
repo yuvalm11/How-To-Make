@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="home-container">
+    <div class="row home-row first-row">
+        <div class="col">
+            <p class="title only-lg">How to make</p>
+            <p class="title-sm only-sm">How to make (almost) anything</p>
+            <p class="only-sm text">
+                Hi. <br>
+                I am Yuval, an MIT computer science student (6-3), and this website will cover my progress on my way to learning how to make (almost) anything!
+            </p>
+        </div>
+    </div>
+    <div class="row home-row">
+        <div class="col yellow video-wrapper">
+            <video class="only-lg video-wrapped" autoplay loop muted>
+                <source src="{{url_for('static', filename='assets/home/w7_soldering.mp4')}}" type='video/mp4'>
+            </video>
+            <img class="only-sm" src="{{url_for('static', filename='assets/home/w7_soldering.jpg')}}">
+        </div>
+        <div class="col-lg-9 col-8">
+            <p class="title only-lg">Almost</p>
+        </div>
+    </div>
+    <div class="row home-row">
+        <div class="col yellow"></div>
+        <div class="col yellow video-wrapper">
+            <video class="only-lg video-wrapped" autoplay loop muted>
+                <source src="{{url_for('static', filename='assets/home/milling.mp4')}}" type='video/mp4'>
+            </video>
+            <img class="only-sm" src="{{url_for('static', filename='assets/home/milling.jpg')}}">
+        </div>
+        <div class="col-lg-6 col-4">
+            <p class="title only-lg">anything</p>
+        </div>
+    </div>
+    <div class="row home-row">
+        <div class="col yellow video-wrapper"></div>
+        <div class="col yellow"></div>
+        <div class="col yellow video-wrapper">
+            <video class="only-lg video-wrapped" autoplay loop muted>
+                <source src="{{url_for('static', filename='assets/home/chair.mp4')}}" type='video/mp4'>
+            </video>
+            <img class="only-sm" src="{{url_for('static', filename='assets/home/chair.jpg')}}">
+        </div>
+        <div class="col only-lg">
+            <p class="text only-lg" style="position: absolute;">
+                Hi. <br>
+                I am Yuval, an MIT computer science student (6-3),<br>and this website will cover my progress on my way
+                to learning
+                how to make (almost) anything!
+            </p>
+        </div>
+    </div>
+    <div class="row home-row only-lg">
+        <div class="col yellow"></div>
+        <div class="col yellow video-wrapper"></div>
+        <div class="col yellow"></div>
+        <div class="col"></div>
+    </div>
+    <div class="row bottom-row yellow"></div>
+</div>
+{% endblock %}

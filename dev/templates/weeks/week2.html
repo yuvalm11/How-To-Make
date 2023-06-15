@@ -1,0 +1,44 @@
+<h3>Milling the board</h3>
+<div class="row">
+    <div class="col-lg-9">
+        <p>
+            For this week we were assigned to mill, solder, and program a mil an in-circuit programmer that includes a
+            microcontroller. After quick training on the mill, I got into milling my board. The process was relatively
+            quick and did not require too much creativity. However, I did fail on my first attempt, after interfering
+            with the calibration process while replacing the tip.<br>
+            If you'll look closely you will see that the resulting board (on the left) is different than the outlines
+            (right and center). That is because I used a slightly different design that Anthony made.
+        </p>
+        <video class="img-fluid" muted controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week2/milling.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+    <div class="col-lg">
+        <img src="{{url_for('static', filename='/assets/weeks/week2/cicuit.jpg')}}" class="img-fluid only-lg">
+        <img src="{{url_for('static', filename='/assets/weeks/week2/cicuit2.jpg')}}" class="img-fluid only-sm">
+    </div>
+</div>
+
+<div class="break-line"></div>
+
+<h3>Soldering</h3>
+<div class="row">
+    <div class="col-lg-7">
+        <p>
+            Soldering the components was exciting since it made the board look like an actual functioning chip. I
+            soldered before, and after getting used to the small size of the components the process went pretty well.
+            I soldered two <code>0</code><sub>&#8486;</sub> resistors, a 1<sub>&#956;</sub>
+            capacitor, two cable connectors, and a microcontroller.
+        </p>
+        <h3 class="mt-4">Programming the chip</h3>
+        <p>
+            Unlike the previous parts, this one was not fast and easy. Installations on an M1 MacBook are a tough
+            mission, and even after 2 hours of terminal commands we could'nt make it work. Both EDBG and pyOCD
+            refused to let me program my chip.<br>
+            Eventually I gave up and used a Windows computer to program it.
+        </p>
+    </div>
+    <div class="col-lg">
+        <img src="{{url_for('static', filename='/assets/weeks/week2/soldered_board.jpeg')}}" class="img-fluid">
+    </div>
+</div>

@@ -1,0 +1,113 @@
+<h3>Overview</h3>
+<p>
+    That was one of the most exciting weeks for me in the class so far. I felt like I learned a lot and was very proud
+    of the results I got at the end of it. <br>
+    I wanted to build a programmed circuit that will interact with an addressable LED strip to create a game for two
+    players. <br> Originally I thought of a digital tug-of-war game, in which each player presses a button to push their
+    opponent backward. <br> Unfortunately, due to time constraints, I had to simplify my goals to complete the
+    assignment on time, and my idea was to design a board that in the future will support more advanced programs, but in
+    the meantime, will carry a simpler one.
+</p>
+
+<h3>Making The Board</h3>
+<div class="row">
+    <div class="col-lg-9">
+        <p>I started my design from the basic SAM-D11C microcontroller circuit and only added a 10-pin connector,
+            connected to different I/Os, ground, and 5V. <br>
+            The design was simple but very flexible and can be used for all sorts of tasks depending on the program
+            and the components that are connected to it. <br>
+            I finished the design, milled, and soldered, and was finally ready to start working on the program! Little
+            did I know that the software library I was planning to use (Adafruit Neopixel) refuses to work with the
+            SAM-D11C and requires stronger microcontrollers. Junhong tried to help me modify the library system files
+            and force it to support the SAM-D11C, and I found
+            <a href="https://fabacademy.org/2022/labs/sorbonne/students/chloe-laurent/assignments/week09">
+                this website</a> that described the same problem, but we quickly understood that milling a new board
+            with a different microcontroller will be quicker and easier.
+        </p>
+    </div>
+    <div class="col-lg">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week6/board1.jpeg')}}" alt="">
+    </div>
+</div>
+<p class="mt-4">
+    I modified my design and used the SAM-D21E, which is supported by Adafruit Neopixel and many other libraries. I also
+    connected the empty pins on the connector to two additional I/Os and one 3.3V that may be useful in the future.<br>
+    Soldering the SAM-D21E is much more challenging than other components I've used so far, but the practice during the
+    past electronics weeks paid off and everything went as planned. This time I knew that I am done with building the
+    board and only left with writing the program.
+</p>
+<div class="row">
+    <div class="col-lg-5">
+        <video class="img-fluid" muted controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week6/soldering.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+    <div class="col-lg-4">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week6/pcb2.jpg')}}" alt="">
+    </div>
+    <div class="col-lg">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week6/board2.jpeg')}}" alt="">
+    </div>
+</div>
+
+<div class="row mt-4">
+    <h3>Programming</h3>
+    <div class="col-lg-8">
+        <p>
+            I started by loading the <a
+                href="https://github.com/adafruit/Adafruit_NeoPixel/blob/master/examples/simple/simple.ino">Adafruit
+                Neopixel example code</a> to verify my board functions correctly. <br>
+            It was exciting to see the LEDs working and it felt like I finally completed this skill set of
+            designing a board, building it, and programming it. <br>
+            Additionally, I was able to properly install EDBG after having the common installation problems on
+            mac. To do this I carefully followed the instructions on <a
+                href="https://mtm.cba.mit.edu/2021/2021-10_microcontroller-primer/edbg/">this website</a>.
+        </p>
+    </div>
+    <div class="col-lg">
+        <video class="img-fluid" muted controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week6/firstprogram.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+<h5 class="mt-4">Writing The Code</h5>
+<div class="row">
+    <div class="col-lg-8">
+        <p>
+            I was less worried about this part of the week and playing with the code and LEDs was fun. I wanted to
+            write a program that takes input from a button and sends 'pulses' through the LEDs strip. <br>
+            I used an array of 10 integers, each of which can function as an indicator of the starting point of a
+            pulse.<br>
+            Each button press will take the first array argument that still does not represent a pulse and start
+            incrementing it on each loop iteration. This allows me to have multiple pulses at the same time instead of
+            one.
+        </p>
+    </div>
+    <div class="col-lg">
+        <video class="img-fluid" muted controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week6/pulses.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+</div>
+<p class="mt-4">
+    Additionally, I added a feature that stacks all pulses at the end of the strip until the whole strip
+    is full, Then changes the color and sends a new pulse. <br>
+    While presenting my board in class I noted that I had a bug in my software that cause the pulses to
+    slow down if multiple pulses were sent. Thanks to <a
+        href="https://fab.cba.mit.edu/classes/863.22/EECS/people/Raiphy/index.md.html">Raiphy</a> we were
+    able to perform real-time debugging and fix the issue during the break.
+    I also laser-cut an acrylic enclosure to make it feel more like a finished product.<br><br>
+    I added some additional features, including another button that turns all the
+    lights on instead of sending pulses and a long press to turn the LEDs off.
+</p>
+
+<button class="btn btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+    aria-expanded="false" aria-controls="collapseExample">
+    Click here to see the final code
+</button>
+<div class="collapse" id="collapseExample">
+    <div class="code-container">
+        {% include "/code/week6.html" %}
+    </div>
+</div>

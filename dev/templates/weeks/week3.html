@@ -1,0 +1,80 @@
+<h3>Scanning</h3>
+<div class="row">
+    <div class="col-lg-6">
+        <p>
+            The scanning process was way quicker then I expected. I wanted to scan a small rubber duck and used
+            the Revpoint scanner to do that.<br>
+            I took a few tries to get it to work, but I was surprised of the results. The model that attached here is a
+            compressed version of the scanning which consisted of much more data, so in practice the scanner can produce
+            much smoother results.
+        </p>
+    </div>
+    <div class="col-lg-3">
+        <img src="{{url_for('static', filename='/assets/weeks/week3/duck1.jpg')}}" class="img-fluid">
+    </div>
+    <div class="col-lg-3">
+        <model-viewer style="width: 100%; min-height: 270px;"
+            src="{{url_for('static', filename='/assets/weeks/week3/duck_web.glb')}}" ar
+            ar-modes="webxr scene-viewer quick-look" camera-controls
+            poster="{{url_for('static', filename='/assets/weeks/week3/poster_duck.webp')}}" shadow-intensity="1"
+            camera-orbit="323deg 75deg auto" camera-target="3.92m -24.69m -20.24m">
+            <div class="progress-bar hide" slot="progress-bar">
+                <div class="update-bar"></div>
+            </div>
+        </model-viewer>
+    </div>
+</div>
+
+<div class="break-line"></div>
+
+<h3>Printing</h3>
+<p>
+    3d printing always seems like magic to me. You send a 3d file and a few hours later get exactly what
+    you wanted. This week I realized that it's not that simple.<br>
+    It took me three prints to get my original plan to work - each took several hours. Even my backup plan
+    wasn't successful and took two tries as well.<br>
+    I assume this slow process of learning from mistakes gets faster with experience, and yet, it can be
+    frustrating to wait 4 hours for a print and only then understand that you need to change your design.
+    The mistakes I had were mostly because I didn't estimate the performance of the machines correctly
+    and I will elaborate on each later. I believe that my next experience with this tool will be much
+    smoother and I feel like Iv'e learned a lot this week.
+</p>
+
+<div class="row mt-4">
+    <div class="col-lg-6">
+        <h5>The Lamp</h5>
+        <p>
+            For my original idea, I wanted to create a lamp that looks boring when off, but when turned on reveals
+            a unique shadow pattern.<br>
+            It took several iterations to get the design I imagined: a web-like structure inside a seemingly
+            boring cylinder. A sliced version of the design is attached.
+        </p>
+        <model-viewer style="min-height: 400px; width: 100%;"
+            src="{{url_for('static', filename='/assets/weeks/week3/lamp.glb')}}" ar
+            ar-modes="webxr scene-viewer quick-look" camera-controls
+            poster="{{url_for('static', filename='/assets/weeks/week3/poster_lamp.webp')}}" shadow-intensity="1"
+            camera-orbit="38.85deg 83.13deg auto" auto-rotate>
+            <div class="progress-bar hide" slot="progress-bar">
+                <div class="update-bar"></div>
+            </div>
+        </model-viewer>
+    </div>
+    <div class="col-lg-6">
+        <h5>The Spinner</h5>
+        <p>
+            When my original idea ran into some problems with my original idea, I thought it can be helpful to
+            design a good backup model.<br>
+            I wanted to print a fidget spinner in one piece since the idea of printing a functioning ball bearing
+            seemed exciting to me.
+        </p>
+        <model-viewer style="min-height: 400px; width: 100%;"
+            src="{{url_for('static', filename='/assets/weeks/week3/spinner_for_web.glb')}}" ar
+            ar-modes="webxr scene-viewer quick-look" camera-controls
+            poster="{{url_for('static', filename='/assets/weeks/week3/poster_spinner.webp')}}" shadow-intensity="1"
+            camera-orbit="-107.3deg 83.94deg auto" camera-target="0.0001392m 0m 0m">
+            <div class="progress-bar hide" slot="progress-bar" auto-rotate>
+                <div class="update-bar"></div>
+            </div>
+        </model-viewer>
+    </div>
+</div>
