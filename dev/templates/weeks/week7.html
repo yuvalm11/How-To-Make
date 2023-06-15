@@ -1,0 +1,86 @@
+<h3>Overview</h3>
+<div class="row">
+    <div class="col-lg-7">
+        <p>
+            This was one of the hardest weeks for me in the class so far. <br>
+            Although I started working on the assignment early in the week, I experienced many troubles with my molds
+            and was able to start casting only the night before class. <br>
+            After all, I am relatively proud of the result and happy that I could finish on time, considering the
+            circumstances.
+        </p>
+    </div>
+    <div class="col-lg">
+        <img class="img-fluid mt-lg-0 mb-4" src="{{url_for('static', filename='/assets/weeks/week7/pour.jpeg')}}" alt="">
+    </div>
+</div>
+
+<div class="row">
+    <h3>Design</h3>
+    <div class="col-lg-7">
+        <p>
+            My goal was to design a product that will utilize the main advantage of molding and casting - to produce
+            many identical parts quickly. <br>
+            I remembered seeing a kind of sculpture <a href="https://www.etsy.com/listing/1096903744/sweepy-sprouts-3d-printed-wall-sculpture?gpla=1&gao=1&&utm_source=google&utm_medium=cpc&utm_campaign=shopping_us_a-home_and_living-home_decor-wall_decor-wall_hangings-other&utm_custom1=_k_Cj0KCQjwk5ibBhDqARIsACzmgLSBXLnTLtFY0AGvHKPH33e0zxPCwUOTGKse4KAwE-iGzeshyU_j8K4aAmunEALw_wcB_k_&utm_content=go_12574416432_120844866658_507798976788_pla-305562556206_c__1096903744_585681117&utm_custom2=12574416432&gclid=Cj0KCQjwk5ibBhDqARIsACzmgLSBXLnTLtFY0AGvHKPH33e0zxPCwUOTGKse4KAwE-iGzeshyU_j8K4aAmunEALw_wcB
+        ">online</a> that uses many similar 3D printed parts to create an art piece with a "flowing"
+            impression. <br>
+            I thought I can produce a simple version of a sculpture as such using molding and casting. <br>
+            I started by designing a sigle part, which was pretty simple using the Form tool on Fusion. Then with the
+            assembly feature, I design a final version of the assembled sculpture.
+        </p>
+    </div>
+    <div class="col-lg">
+        <model-viewer style="width: 100%; min-height: 300px;"
+            src="{{url_for('static', filename='/assets/weeks/week7/moldingfinal.glb')}}" ar
+            ar-modes="webxr scene-viewer quick-look" camera-controls
+            poster="{{url_for('static', filename='/assets/weeks/week7/moldingfinal.webp')}}" shadow-intensity="1"
+            camera-orbit="30deg 75deg auto" min-field-of-view="-30deg">
+            <div class="progress-bar hide" slot="progress-bar">
+                <div class="update-bar"></div>
+            </div>
+        </model-viewer>
+    </div>
+</div>
+<div class="row mt-4">
+    <h5>Mold Design</h5>
+    <div class="col-lg-9">
+        <p>
+            To derive the design of the mold from the final part shape, I sliced each part in half and placed the
+            halves in a hollow box of the size we used for machining. <br>
+            I added pegs that will allow me to assemble the molds accurately and was ready for machining.
+            This part proved to be crucial later in the week, and the mistakes I've made here cost me a lot of
+            time. <br>
+            It seemed perfectly okay to have one type of mold for each part, and I was sure that producing two
+            identical molds will allow me to assemble a full part. <br>
+            After casting two silicon molds I found out that I was completely wrong and forgot to consider the
+            need for mirrored molds for parts that are not fully symmetric. <br>
+            Eventually, I had two perfect molds that can only produce the left half of my parts. <br>
+            I accepted the fact that I need to machine a mirrored version of the mold. It was especially discouraging
+            due to the scarcity of machine time. <br>
+            Eventually, I machined a mirrored version of my mold, but due to a mismatch od the pegs I had to cast
+            the parts in halves and glue them.
+        </p>
+        <h3>Machining & Casting</h3>
+        <p>
+            After fixing the issues with the molds I could start producing the parts. From this point, things went
+            much more smoothly and I was able to make the parts pretty quickly and efficiently. <br>
+            I used Oomoo to make the molds and dry stone to make the parts. The casting process was pretty
+            straightforward and I enjoyed it a lot. <br>
+            I used diluted dry stone to glue the pieces and to smooth the surface after gluing.
+        </p>
+    </div>
+    <div class="col-lg">
+        <img class="img-fluid mt-0" src="{{url_for('static', filename='/assets/weeks/week7/wax.jpeg')}}" alt="">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week7/molds.jpeg')}}" alt="">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week7/parts.jpeg')}}" alt="">
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week7/result.jpeg')}}" alt="">
+    </div>
+    <div class="col-lg">
+        <video class="img-fluid" muted controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week7/glue.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<pre style="height: 22em;"><code class="language-pascal">#include &lt;Adafruit_NeoPixel.h>
+
+#ifdef __AVR__#include &lt;avr/power.h>
+#endif
+#define LEDPIN 3
+#define BTN1 1
+#define BTN2 2
+#define NUMPIXELS 300
+
+Adafruit_NeoPixel pixels(NUMPIXELS, LEDPIN, NEO_GRB + NEO_KHZ800);
+#define DELAYVAL 0
+#define NUMPULSES 10
+#define PW 10
+
+int x[] = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+
+int buttonState = 0;
+int k = NUMPIXELS + PW;
+int R = random(0, 100);
+int G = random(0, 100);
+int B = random(0, 100);
+
+void setup() {
+    
+#if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
+  clock_prescale_set(clock_div_1);
+#endif
+
+  pixels.begin();
+  pinMode(BTN1, INPUT_PULLUP);
+  pinMode(BTN2, INPUT_PULLUP);
+  pixels.clear();
+  pixels.show();
+}
+
+void loop() {
+  if (digitalRead(BTN2) == LOW) {
+    int c = 0;
+    while (digitalRead(BTN2) == LOW) {
+      if (c >= 100) {
+        pixels.clear();
+        pixels.show();
+      }
+      delay(10);
+      c++;
+    }
+    if (c &lt; 100) {
+      for (int i = 0; i &lt; NUMPIXELS; i++) {
+        pixels.setPixelColor(i, pixels.Color(R, G, B));
+      }
+    }
+    k = NUMPIXELS + PW;
+    pixels.show();
+    R = random(0, 100);
+    G = random(0, 100);
+    B = random(0, 100);
+
+  }
+
+  if (digitalRead(BTN1) == LOW) {
+    while (digitalRead(BTN1) == LOW) {
+      delay(10);
+    }
+    for (int p = 0; p &lt; NUMPULSES; p++) {
+      if (x[p] == -1) {
+        x[p] = 0;
+        break;
+      }
+    }
+  }
+
+  for (int i = 0; i &lt; NUMPULSES; i++) {
+    if (x[i] != -1) {
+      pixels.setPixelColor(x[i], pixels.Color(R, G, B));
+      pixels.setPixelColor(x[i] - PW, pixels.Color(0, 0, 0));
+      if (x[i] &lt; k) {
+        x[i]++;
+      } else {
+        x[i] = -1;
+        k = k - PW;
+      }
+    }
+  }
+  delay(DELAYVAL);
+  pixels.show();
+
+  if (k &lt; PW) {
+    k = NUMPIXELS + PW;
+    R = random(0, 100);
+    G = random(0, 100);
+    B = random(0, 100);
+  }
+}</code></pre>

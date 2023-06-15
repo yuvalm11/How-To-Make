@@ -1,0 +1,100 @@
+<h3>Vinyl cutter</h3>
+<p>
+  For my first assignment, I designed and cut a vinyl sticker.<br>
+  After a failed attempt with an ambitiously small sticker, I've learned my lesson and designed a larger one
+  that came out perfect.<br>
+  I used Mods to translate the designs to machine instructions.
+</p>
+
+<div class="row">
+  <div class="col-lg">
+    <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week1/week1_vinyl.jpeg')}}">
+  </div>
+  <div class="col-lg">
+    <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week1/week1_failed_vinyl.jpeg')}}">
+  </div>
+</div>
+
+<div class="break-line"></div>
+
+<h3>Laser cutter</h3>
+<p>
+  For the laser cutting assignment, I wanted to design, cut, and build an old plane model.<br>
+  As a reference, I used a model I found online at
+  <a href="https://www.freepatternsarea.com">freepatternsarea.com</a>.<br>
+  Although the reference was helpful, it still took time to design the plane since I was very careful about the
+  small details of the design. After getting used to the parametric design, things started to go much more smoothly,
+  and part by part, I finished the first draft and was ready to try it out!
+</p>
+
+<div class="row">
+  <div class="col-lg-7">
+    <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week1/ref_model.jpg')}}">
+  </div>
+  <div class="col-lg">
+    <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week1/ref_parts.jpg')}}">
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg">
+    <h5>Failed attempt #1</h5>
+    <p>
+      A few seconds after I started to cut, I noticed that the cutting speed is way too slow. With help from Dave, I
+      understood I didn't export my CAD correctly and the 3D parts were projected with multiple lines on top of each
+      other.
+    </p>
+  </div>
+  <div class="col-lg">
+    <h5>Failed attempt #2</h5>
+    <p>
+      After figuring out how to export correctly, I went on and tried to cut again. This time the cutting speed was too
+      high, creating shallow cuts that did not go al the way through the cardboard.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg">
+    <video class="img-fluid" controls>
+      <source src="{{url_for('static', filename='/assets/weeks/week1/laser_fail_1.mp4')}}" type="video/mp4">
+    </video>
+  </div>
+  <div class="col-lg">
+    <img src="{{url_for('static', filename='/assets/weeks/week1/laser_fail_2.jpeg')}}" class="img-fluid">
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-7">
+    <h5>Success!</h5>
+    <p>
+      After some small tweaks, I cut the parts again and assembled everything. I was so excited that it
+      was successful, and many parts that I was sure will not work on the first try fit perfectly.<br>
+      The overall result was beyond my expectations - the model felt robust and durable.<br>
+      My main concern was the top wing as I was afraid that its joins left too much room for movement. After
+      asking Alfonso about that, I was already prepared with a solution but was happy to see that it was
+      durable and steady enough.
+    </p>
+  </div>
+  <div class="col-lg">
+    <img src="{{url_for('static', filename='/assets/weeks/week1/Parts.jpg')}}" class="img-fluid">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg">
+    <img src="{{url_for('static', filename='/assets/weeks/week1/result3.jpeg')}}" class="img-fluid">
+  </div>
+  <div class="col-lg">
+    <img src="{{url_for('static', filename='/assets/weeks/week1/result1.jpeg')}}" class="img-fluid">
+  </div>
+</div>
+
+<div class="break-line"></div>
+
+<h3>Design files <u>&#8595;</u></h3>
+<a href="{{url_for('static', filename='/assets/weeks/week1/elephant_sticker.png')}}" download
+  class="text-secondary">Elephant sticker</a><br>
+<a href="{{url_for('static', filename='/assets/weeks/week1/PlaneFinal.dxf')}}" download="plane_model.dxf"
+  class="text-secondary">Plane DXF file</a>

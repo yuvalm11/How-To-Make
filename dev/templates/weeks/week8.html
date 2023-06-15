@@ -1,0 +1,112 @@
+<h3>Overview</h3>
+<p>
+    I had a lot of fun working on this week's project, and although there is some more work to be done, I am very proud
+    of the result. <br>
+    My goal for the week was to use a sensor measurement to synthesize music. <br>
+    After the lecture, I was curious to work with the optical distance sensors (VL53L0X \ VL53L1X) since they seemed
+    relatively simple to use while still producing measurements with impressive accuracy and range.<br>
+    My idea was to build a rotating platform and place the sensor in front of it. That way, by placing an object on the
+    platform, the distance measurement will change periodically, creating a different melody for different objects.
+</p>
+<h3>Making The Board</h3>
+<div class="row">
+    <div class="col-lg-8">
+        <p>
+            I used Neil's board as a reference and only changed some of the routings. That time, I didn't plan to use
+            the board to do anything except measure distance, and unfortunately didn't add breakout pins. Because of
+            that, I had to solder many wires to connect the speaker.
+        </p>
+        <h5>Soldering</h5>
+        <p>
+            That was the first time I used the soldering paste, and I am glad it worked on the first try. I found a lot
+            of uncertainty in this process since it is almost impossible to know if the component was correctly placed
+            or well-soldered. <br>
+            Even after soldering the sensor, there is no way to tell if it's appropriately connected until programming
+            the circuit.
+        </p>
+        <h5>Enclosure</h5>
+        <p>
+            To build the enclosure, I laser-cut the parts from wood and glued them all together. I aimed for a more
+            refined design, yet the result was good and held everything together without too many visible wires. I used
+            a DC motor with a gearbox that was wired to a potentiometer, a switch, and a 9V battery. The motor circuit
+            was completely separate from the sensor board. <br>
+            When assembling, I tried to use reliable connections, including heat shrinks for the electronics or
+            designated grooves and holes for mechanical connections.
+        </p>
+    </div>
+    <div class="col-lg">
+        <img class="img-fluid mt-lg-0" src="{{url_for('static', filename='/assets/weeks/week8/board.jpeg')}}" alt="">
+    </div>
+</div>
+<h3 class="mt-4">Programming</h3>
+<div class="row">
+    <div class="col-lg">
+        <p>
+            I started by loading the example code from <a href="https://github.com/pololu/vl53l1x-arduino">Pololu's
+                VL53L1X library</a>. <br>
+            At this point, I still didn't know if I properly soldered the sensor and was curious to test it. <br>
+            Immediately after loading the software, the measurements started to go through the serial plotter!
+            It was an exciting moment that solved the uncertainty about the board.
+        </p>
+    </div>
+    <div class="col-lg">
+        <video class="img-fluid mt-lg-0" autoplay loop muted>
+            <source src="{{url_for('static', filename='/assets/weeks/week8/first_measure.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+</div>
+<h5 class="mt-4">Making Music</h5>
+<div class="row">
+    <div class="col-lg">
+        I connected a piezo speaker to my board and simply used the built-in 'tone' function, with the sensor output as
+        an argument, to play sound. <br>
+        The result was noisy and not very pleasant, but it was great for a start. <br>
+        I added discretization to the sensor output and associated each relevant distance range with a note's frequency
+        in the A Minor scale.
+    </div>
+    <div class="col-lg">
+        <video class="img-fluid mt-lg-0" controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week8/first_sound.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <p>
+            Lastly, to address the noisiness of the sensor output, I added a moving average filter that computes the
+            average value of the last five measurements. <br>
+            Together with lowering the motor speed, this step dramatically improved the overall outcome.
+        </p>
+    </div>
+    <div class="col-lg">
+        <video class="img-fluid mt-lg-0" controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week8/final.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+</div>
+<h3 class="mt-4">Required improvements</h3>
+<p>
+    Although the main board works well, I used too many patches to hide some significant problems. Most of them are
+    tightly related to output devices, so I hope to solve them during output devices week!
+    These are the main issues I need to address: </p>
+<ul>
+    <ul>
+        <li>
+            Unstable microcontroller startup - every time the board wakes up, it takes a few resets until it gets
+            stable. I temporarily connected a button to the reset pin of the board, and every time I connected the
+            board, I kept resetting it until it started working. Neil suggested a small addition to the board
+            <a href="http://academy.cba.mit.edu/classes/embedded_programming/D11C/hello.D11C.blink.reset.png">
+                (can be found here)</a>
+            that slows down the start-up process and allows the board to stabilize.
+        </li>
+        <li>
+            A separate circuit for the motor - I used a separate 9V circuit for the motor and controlled its speed using
+            a 200-ohm trimpot. This method dissipates a lot of energy and adds unnecessary components to the product.
+            For next week, I will power the motor through the board and control it through the microcontroller.
+        </li>
+        <li>
+            Low speaker volume - The amplification circuit Junhong helped me to assemble was good as a patch, but I am
+            sure that with proper connections and a better speaker, I can get better results.
+        </li>
+    </ul>
+</ul>

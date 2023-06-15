@@ -1,0 +1,136 @@
+<h3>Overview</h3>
+<div class="row">
+    <div class="col-lg-8">
+        <p>
+            This week was a great opportunity to start working on my final project.<br>
+            I wanted to start building the infrastructure for my chessboard project and aimed to create a board that
+            handles network communication.<br>
+            My goal was to be able to control the I/O pins of the microcontroller from a distant platform.
+        </p>
+    </div>
+    <div class="col-lg">
+        <img class="img-fluid mt-lg-0" src="{{url_for('static', filename='/assets/weeks/week10/PCB.jpg')}}" alt="">
+    </div>
+</div>
+
+<h3 class="mt-4">Boards</h3>
+<div class="row">
+    <div class="col-lg-8">
+        <p>
+            I used Neil's example board as a reference and added some breakout pins for some GPIOs. Since this was only
+            a development board, I did not use all the GPIOs of the ESP32.<br>
+            Milling and soldering were pretty straightforward.
+        </p>
+        <h5>Reset problem</h5>
+        <p>
+            I had a similar problem as I had with my input devices board. The ESP was resetting very frequently and was
+            not stable at all.<br>
+            With Junhong's help, we found that the problem was that the rise time after a reset was too short, not
+            allowing enough time for the board to stabilize. Junhong suggested an easy fix - adding a capacitor between
+            the reset button and the ground.<br>
+            I soldered the capacitor as a patch, which immediately solved the problem.<br><br>
+            Later I accidentally ripped the reset button and some of the copper around it, so I updated my design and
+            remade the board.<br>
+            I also used a breadboard to build a simple LED board for testing and laser cut an enclosure.
+        </p>
+        <h5>The FTDI Programmer</h5>
+        <p>
+            Due to the scarcity of FTDI cables in the shop, I used Quentin's design and built an FTDI programmer
+            board.<br>I've been using it as my only programmer for a few days, and it's working perfectly.
+        </p>
+    </div>
+    <div class="col-lg">
+        <img class="img-fluid mt-lg-0" src="{{url_for('static', filename='/assets/weeks/week10/board.jpeg')}}" alt="">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week10/case.jpeg')}}" alt="">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg">
+        <video class="img-fluid" muted controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week10/soldering.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+    <div class="col-lg">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week10/allboards.jpeg')}}" alt="">
+    </div>
+</div>
+
+<div class="break-line"></div>
+
+<h3>Software</h3>
+<p>
+    After having some positive experiences with it, I decided to use Google's Firebase as a backend service for this
+    week and my final project. Although Firebase saves a lot of the burden, there was still a lot of software work to
+    set up the environment and eventually create stable communication between the ESP to a web app.
+</p>
+<h5>The ESP side</h5>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="row">
+            <p>
+                I followed <a href="https://randomnerdtutorials.com/esp32-firebase-realtime-database/"> this great
+                    tutorial</a> to set up the basic connection between my firebase project and the ESP.<br> Generally,
+                I created a firebase project and configured a real-time database, which easily allowed to read and write
+                data from different clients.<br>
+                After that, I used a firebase-to-ESP32 library to build test programs that either read or write data
+                from the database.<br>
+                Eventually, I wrote a program that allowed me to control several LEDs by changing database values.<br>
+                The code is repetitive and messy since it is only for testing.
+            </p>
+        </div>
+        <button class="btn btn btn-outline-dark mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseESP"
+            aria-expanded="false" aria-controls="collapseESP">
+            Click here to see ESP32-Firebase code
+        </button>
+        <div class="collapse" id="collapseESP">
+            <div class="code-container">
+                {% include "/code/week10_1.html" %}
+            </div>
+        </div>
+
+        <h5 class="mt-4">Web app</h5>
+        <p>
+            Since manually changing values through the firebase admin console is cumbersome and slow, I build a
+            JavaScript test app that connects to the same database, reads and changes values, and controls the LEDs.<br>
+            <a href="https://randomnerdtutorials.com/esp32-firebase-web-app/">This tutorial</a> describes most of the
+            process.<br> I used Firebase hosting for this app, which allowed me to have an easy deployment process and a
+            public domain.
+        </p>
+        <button class="btn btn btn-outline-dark mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWebJS"
+            aria-expanded="false" aria-controls="collapseWebJS">
+            Click here to see web app JavaScript code
+        </button>
+        <div class="collapse" id="collapseWebJS">
+            <div class="code-container">
+                {% include "/code/week10_2.html" %}
+            </div>
+        </div>
+
+        <h5 class="mt-4">WiFi Manager</h5>
+        <p>
+            I was proud of the result I had so far but having to hard-code the WiFi credentials every time I moved to a
+            different network made it hard to use the board. <br>
+            Originally, I thought I'll have to build a mobile app to send WiFi credentials via Bluetooth to the ESP. I
+            was trying to find a minimalist solution for this problem, and everything seemed way too complicated. <br>
+            After some research, I found this incredible library that handles this burden with a few lines of code. <br>
+            I had to dive into their weirdly written code to customize the interface to a more user-friendly design, but
+            it was worth it. <br>
+            The result is a smooth, straightforward process that does not require downloading an app or any special
+            effort from the user. <br>
+            <a href="https://dronebotworkshop.com/wifimanager/">This tutorial</a> helped me with the installation and
+            configuration of the library. <br>
+            The code for the WiFi manager is included in the ESP32-Firebase code above. <br><br>
+            For interface week, I plan to build a chess app that controls the M8 chessboard using the same
+            infrastructure I developed this week.
+        </p>
+    </div>
+    <div class="col-lg">
+        <video class="img-fluid mt-lg-0" muted controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week10/appdemo.mp4')}}" type="video/mp4">
+        </video>
+        <video class="img-fluid" muted controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week10/wifimanager.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+</div>

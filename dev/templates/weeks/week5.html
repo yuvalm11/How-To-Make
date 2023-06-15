@@ -1,0 +1,176 @@
+<h3>Design</h3>
+<div class="row">
+    <div class="col-lg-8">
+        <p>
+            Traditional woodworking was a hobby of mine way before coming to MIT,
+            and so far, I have built a few
+            furniture pieces that I am really proud of. However, during this past week, I have learned that
+            computer-controlled woodworking requires different skills, and poses different issues to consider.
+            <br>
+            The idea of building a chair is sitting at the back of my mind for a long time, and I knew it will be
+            a
+            perfect fit for this week's assignment. I wanted to create a light design with curved surfaces and a
+            smooth appearance, that can fit different environments easily while also keeping an impressive
+            presence. <br>
+            After sketching the legs and the 'ribs' of the chair, I added the supports and quickly had the first
+            version of the design.
+        </p>
+    </div>
+    <div class="col-lg d-flex justify-content-center">
+        <model-viewer style="height: 100%; width: 100%; min-height: 300px;"
+            src="{{url_for('static', filename='/assets/weeks/week5/chair_original.glb')}}" ar
+            ar-modes="webxr scene-viewer quick-look" camera-controls
+            poster="{{url_for('static', filename='/assets/weeks/week5/chair_original.webp')}}" shadow-intensity="1"
+            exposure="0.4" shadow-softness="0.85" camera-orbit="124.2deg 79.52deg auto" auto-rotate>
+            <div class="progress-bar hide" slot="progress-bar">
+                <div class="update-bar"></div>
+            </div>
+        </model-viewer>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8"></div>
+    <div class="col text-center">
+        <p class="text-muted"><small>Original design</small></p>
+    </div>
+</div>
+<h5>Adjustments</h5>
+<div class="row">
+    <div class="col-lg-8">
+        <p>
+            When I started preparing the CAM, I noticed that only cutting the ribs
+            will require seven
+            48"&times;48" sheets of OSB, which was much more than I could afford because of both machine time and
+            the amount of material. <br>
+            I tried to change the design and reduce the amount of material it requires. Making it fit into two OSB
+            sheets while keeping the design characteristics and general appearance was an enjoyable challenge that
+            felt like a puzzle. <br>
+            Luckily my design was relatively constrained and parametric, so updating it after most of it was
+            complete wasn't extremely hard. <br>
+            I reduced the number of ribs from 20 to 12, increased the angle of the ribs so it'll be easier to nest
+            them on the sheet, and generally made all the parts smaller. After assembling the chair, I added a
+            support plate at the bottom to make it more robust. After many iterations, I made it fit into two
+            sheets but was concerned that the result will be less
+            stable and too small.</p>
+    </div>
+    <div class="col-lg-4 d-flex justify-content-center">
+        <model-viewer style="height: 100%; width: 100%; min-height: 300px;"
+            src="{{url_for('static', filename='/assets/weeks/week5/chair.glb')}}" ar
+            ar-modes="webxr scene-viewer quick-look" camera-controls
+            poster="{{url_for('static', filename='/assets/weeks/week5/chair.webp')}}" shadow-intensity="1"
+            camera-orbit="305.3deg 71.39deg auto" exposure="0.4" shadow-softness="0.5" auto-rotate>
+            <div class="progress-bar hide" slot="progress-bar">
+                <div class="update-bar"></div>
+            </div>
+        </model-viewer>
+    </div>
+</div>
+<div class="row">
+    <!-- ! TODO CHANGE TO FIGURE -->
+    <!-- ! TODO CHANGE TO FIGURE -->
+    <div class="col-lg-8"></div>
+    <div class="col-lg-4 text-center">
+        <p class="text-muted"><small>Final design</small></p>
+    </div>
+</div>
+<h3>CAM & Cutting</h3>
+<div class="row">
+    <div class="col-lg-9">
+        <p>
+            With Anthony's great help, I was able to get the CAM done pretty quickly and had it ready to cut. We
+            added 'dog bones' to all the ribs joints but left the legs as designed to get a cleaner look at the more
+            exposed joints. <br>
+            The cutting process was surprisingly fast and took less than 15 minutes.
+            However, removing the pieces from the machine bed was a lot more challenging. Since some of them were
+            pretty thin and fragile on their own, it required us to be extra careful and we still broke one of the
+            ribs. <br>
+            Anthony was able to extract the second sheet as a whole and saved us the trouble of extracting each
+            piece individually. Later we cut a few more ribs from scrap pieces to replace the broken ones.
+            I think that was the most challenging and stressful part of this job and I felt a huge relief when we
+            were done with it. <br>
+            I got plenty of help from Anthony throughout the week and especially during this part, and I thank him
+            a
+            lot for that.
+        </p>
+    </div>
+    <div class="col-lg">
+        <img style="width: 100%;" class="img-fluid"
+            src="{{url_for('static', filename='/assets/weeks/week5/IMG_0139-3.gif')}}" alt="">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week5/cnc.jpeg')}}" alt="">
+    </div>
+</div>
+<h3 class="mt-4">Assembly & Finish</h3>
+<p>
+    The assembly process felt more similar to the woodworking experience I had before. It allowed me to
+    get a better understanding of the material and its behavior and also get some important conclusions
+    about my design. <br>
+    I started with gluing the legs, then assembled the supports, and finally attached the ribs. As can be
+    seen in the attached sketch, the main problem I found during the assembly was that I designed the ribs
+    in a way that the top and bottom joints go in opposite directions. <br>
+    Because of that, attaching the ribs required putting heavy pressure on them, and since they were
+    pretty fragile, a few broke during this process.
+    To solve that I used a rasp to file the bottom joint of each rib so it will be easier to insert them.
+    Finally, I added the support pieces to the ribs and started with finishing. <br>
+    Before starting the project, I liked the idea of fine finishing an OSB product and found the examples
+    we saw in class very impressive. Throughout the week, my attitude towards OSB changed, and I
+    understood such a finish will require equipment and time I did not have. <br>
+    I invested a decent amount of time in sending and used some wood-filler (sawdust and glue) to hide
+    some of the defects in the material.
+    Although the finish is far from perfect, the result is relatively smooth, with no sharp edges and no
+    chips. <br>
+</p>
+<div class="row">
+    <div class="col-lg-7">
+        <video class="img-fluid" muted controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week5/assembly.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+    <div class="col-lg">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week5/opposite.jpg')}}" alt="">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week5/arranged.jpeg')}}" alt="">
+    </div>
+</div>
+
+<div class="break-line"></div>
+
+<h5>Conclusions</h5>
+<div class="row mt-4">
+    <div class="col-lg-8">
+        <ul class="list-unstyled">
+            Overall I am very proud of the final product, especially with the limitations I had. I am particularly
+            happy
+            that I tried to come up with creative solutions to those challenges, rather than escaping to methods
+            that I am more comfortable with like adding material or more traditional woodworking. <br>
+            Throughout the week, I've noticed a couple of issues with my design that if addressed correctly, could
+            save me a lot of time.
+            <ul>
+                <li>Consider the robustness of each part before assembly rather than the robustness of the final
+                    product alone.<br>
+                    I was relatively confident that my design is strong enough but had a hard time removing and
+                    assembling the ribs that I did not expect.
+                </li>
+                <li>
+                    Learn the material better! Despite Anthony's warnings, I overestimated the material durability,
+                    making the cutting and assembling process much more challenging, and the final product not as
+                    robust as I
+                    expected.
+                </li>
+                <li>
+                    Consider the assembly while designing. It is important to notice that the design will allow a
+                    convenient assembly to avoid issues like the opposite directions joints I mentioned above.
+                </li>
+            </ul>
+        </ul>
+    </div>
+    <div class="col-lg">
+        <img class="img-fluid" src="{{url_for('static', filename='/assets/weeks/week5/final.jpeg')}}" alt="">
+    </div>
+</div>
+
+<div class="break-line"></div>
+
+<h5>Design files <u>&#8595;</u></h5>
+<a href="{{url_for('static', filename='/assets/weeks/files/Week6Original.f3d')}}" download
+    class="text-secondary">Original Design</a> <br>
+<a href="{{url_for('static', filename='/assets/weeks/files/Week6Final.f3d')}}" download class="text-secondary">Final
+    Design</a>

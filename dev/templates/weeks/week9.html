@@ -1,0 +1,26 @@
+<div class="row">
+    <h3>Light Pong</h3>
+    <div class="col-lg-7">
+        <p>
+            For this week, I used my board from embedded programming week and wrote a different program to use the
+            addressable LEDs to make a ping pong game!<br>
+            Due to the flexibility of the board, it didn't require any hardware changes and was fairly easy to
+            implement. I think this is a great example of the flexibility that comes with embedded programming.<br>
+            I was extremely happy with the result and had a lot of fun making it and playing with it.
+        </p>
+    </div>
+    <div class="col-lg">
+        <video class="img-fluid mt-lg-0" muted controls>
+            <source src="{{url_for('static', filename='/assets/weeks/week9/pong.mp4')}}" type="video/mp4">
+        </video>
+    </div>
+</div>
+<button class="btn btn btn-outline-dark mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePong"
+    aria-expanded="false" aria-controls="collapsePong">
+    Click here to see Light Pong code
+</button>
+<div class="collapse" id="collapsePong">
+    <div class="code-container">
+        {% include "code/week9.html" %}
+    </div>
+</div>
