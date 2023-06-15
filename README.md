@@ -9,6 +9,7 @@ As part of the class, I built a personal web app to document my progress and sho
 
 You can find the website and read about my work in the class [here!](https://fab.cba.mit.edu/classes/863.22/EECS/people/Yuval/index.html)
 
+<br>
 
 # This Repository
 
