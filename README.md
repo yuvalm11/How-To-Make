@@ -11,7 +11,7 @@ As part of the class, I built a personal web app to document my progress and sho
 
 <br>
 
-# This Repository
+# This Repo
 
 I used Flask framework to build a dynamic website that can be easily updated and maintained.
 
